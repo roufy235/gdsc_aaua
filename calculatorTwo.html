@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Calculator
+    </title>
+    <style>
+        body {
+        
+            background-color: #3b4664;
+        }
+        .colorWhite {
+            color: white;
+        } 
+        .container {
+            width: 30%;
+            margin: 100px auto;
+        
+        }
+        .displayResult {
+            background-color: #181f32;
+            color: white;
+            text-align: end;
+            padding: 20px 10px;
+            font-size: 50px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .buttonSection {
+            background-color: #181f32;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 25px;
+            border-radius: 10px;
+
+        }
+        td {
+            padding: 10px;
+        }
+        .blueColor {
+            background-color: #3b4664;
+            color: white;
+        }
+        .redColor {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+      <h1 class="colorWhite">
+          Calculator
+      </h1>
+      <div class="displayResult" id="result">
+         
+      </div>
+      <div class="buttonSection">
+          <table>
+              <tr>
+                  <td>
+                    <button type="button" onclick="firstClick(7)">
+                        7
+                    </button>
+                  </td>
+                  <td>
+                      <button type="button" onclick="firstClick(8)">
+                          8
+                      </button>
+                  </td>
+                  <td>
+                      <button type="button" onclick="firstClick(9)">
+                          9
+                      </button>
+                  </td>
+                  <td>
+                      <button class="blueColor">
+                          del
+                      </button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <button>
+                          4
+                      </button>
+                  </td>
+                  <td>
+                      <button>
+                          5
+                      </button>
+                  </td>
+                  <td>
+                      <button>
+                          6
+                      </button>
+                  </td>
+                  <td>
+                      <button type="button" onclick="signClick('+')">
+                          +
+                      </button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <button>
+                          1
+                      </button>
+                  </td>
+                  <td>
+                      <button>
+                          2
+                      </button>
+                  </td>
+                  <td>
+                      <button>
+                          3
+                      </button>
+                  </td>
+                  <td>
+                      <button type="button" onclick="signClick('-')">
+                          -
+                      </button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <button>
+                          .
+                      </button>
+                  </td>
+                  <td>
+                      <button>
+                          0
+                      </button>
+                  </td>
+                  <td>
+                      <button type="button" onclick="signClick('/')">
+                          /
+                      </button>
+                  </td>
+                  <td>
+                      <button type="button" onclick="signClick('*')">
+                          *
+                      </button>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2">
+                      <button  class="blueColor">
+                          RESET
+                      </button>
+                  </td>
+                  <td colspan="2">
+                      <button class="redColor">
+                          =
+                      </button>
+                  </td>
+              </tr>
+          </table>  
+      </div>
+  </div>
+
+
+
+
+
+  <script>
+
+        const holder = document.getElementById('result')
+        let firstNum = 0
+
+        function firstClick(args) {
+            holder.textContent = args
+            firstNum = args
+            
+        }
+
+        function signClick(args) {
+            switch(args) {
+                case '+': {
+                    holder.textContent = firstNum + '  +'
+                    break;
+                }
+                case '-': {
+                    holder.textContent = firstNum + '  -'
+                    break;
+                }
+                case '/': {
+                    holder.textContent = firstNum + '  /'
+                    break;
+                }
+                default: {
+                    //multiplication
+                    holder.textContent = firstNum + '  *'
+                }
+            }
+        }
+
+  </script>
+</body>
+
+</html>

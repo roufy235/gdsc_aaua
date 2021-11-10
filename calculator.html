@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator App</title>
+    <style>
+        h1 {
+            animation-duration: 1200ms;
+            animation-name: blink;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            -webkit-animation:blink 3000ms infinite; /* Safari and Chrome */
+        }
+        @keyframes blink {
+            from {
+                color:white;
+            }
+            to {
+                color:#3b4664;
+            }
+        }
+        @-webkit-keyframes blink {
+            from {
+                color:white;
+            }
+            to {
+                color:#3b4664;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            text-decoration: underline;
+        }
+        body {
+            background: #3b4664;
+        }
+        .del {
+            background-color: #3b4664 !important;
+            color: white;
+        }
+        .equal {
+            background-color: red !important;
+            color: white;
+        }
+        .container {
+            min-height: 200px;
+            width: 30%;
+            margin: 100px auto 0;
+        }
+        .colorWhite {
+            color: white;
+        }
+        .rectangle{
+            color: white;
+            font-size: 30px;
+            text-align: end;
+            border-radius: 10px;
+            background: #181f32;
+            padding: 30px 10px;
+        }
+        .buttonBox {
+            border-radius: 10px;
+            padding: 5px;
+            margin-top: 10px;
+            background: #252d44;
+            min-height: 100px;
+        }
+        .table {
+            width: 100%;
+        }
+        td {
+            padding: 5px;
+        }
+
+        .button {
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .button:active {
+            background-color: #6eb9f7;
+            background-size: 100%;
+            transition: background 0s;
+        }
+        .button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            GDSC AAUA
+        </h1>
+        <h4 class="colorWhite">
+            Calculator
+        </h4>
+        <div class="rectangle">
+            <span id="number">
+
+            </span>
+        </div>
+        <div class="buttonBox">
+            <table class="table">
+                <tr>
+                    <td>
+                        <button
+                                onclick="isClicked(7)"
+                                type="button" class="button">
+                            7
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(8)"
+                                type="button" class="button">
+                            8
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(9)"
+                                type="button" class="button">
+                            9
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="button del">
+                            del
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button
+                                onclick="isClicked(4)"
+                                type="button" class="button">
+                            4
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(5)"
+                                type="button" class="button">
+                            5
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(6)"
+                                type="button" class="button">
+                            6
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="sign('+')"
+                                type="button" class="button">
+                            +
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button
+                                onclick="isClicked(1)"
+                                type="button" class="button">
+                            1
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(2)"
+                                type="button" class="button">
+                            2
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(3)"
+                                type="button" class="button">
+                            3
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="button">
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="button">
+                            .
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                                onclick="isClicked(0)"
+                                type="button" class="button">
+                            0
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="button">
+                            /
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="button">
+                            *
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button
+                                onclick="equalTo(true)"
+                                type="button" class="button del">
+                            RESET
+                        </button>
+                    </td>
+                    <td colspan="2">
+                        <button
+                                onclick="equalTo()"
+                                type="button" class="button equal">
+                            =
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('number')
+        let firstClick = false;
+        let firstNum = '';
+        let secondNum = ''
+        let str = '';
+        function isClicked(value) {
+            if (!firstClick) {
+                firstNum += value.toString()
+                str = firstNum;
+            } else {
+                secondNum += value.toString()
+                str = str + value.toString();
+            }
+            display.textContent = str
+        }
+
+        function sign(val) {
+            firstClick = true
+            str = str + ' + ';
+            display.textContent = str
+        }
+        function equalTo(isReset = false) {
+            firstClick = false;
+            if (isReset) {
+                display.textContent = '';
+                firstNum = '';
+                secondNum = ''
+            } else  {
+                display.textContent = (parseInt(firstNum) + parseInt(secondNum));
+            }
+
+        }
+    </script>
+</body>
+</html>
